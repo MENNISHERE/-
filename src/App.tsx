@@ -220,19 +220,19 @@ export default function App() {
             {
               title: "Digital Product Creator",
               desc: "At just 13, MENN Maestro is already building and selling digital products that provide real value. From idea to execution, each product is practical, functional, and designed to make a tangible impact.",
-              img: "https://media.discordapp.net/attachments/1308081652525826178/1481268797850652796/d2e30cca-3589-4134-93c6-d518183677c9.jpg?ex=69b2b292&is=69b16112&hm=d72380d7a023200931907decbab06d2b5435e68e6849cc27c1f60bc7bde0364a&=&format=webp&width=598&height=1073",
+              img: "/Digital Product Creator.png",
               tag: "Creation"
             },
             {
               title: "Vision & Ambition",
               desc: "Driven by curiosity and big goals, MENN approaches every project with focus and purpose. Some aspirations lie a little further ahead—like the precision and performance of a BMW M5 F90—serving as inspiration for everything he creates.",
-              img: "https://media.discordapp.net/attachments/1308081652525826178/1481263811641217125/image.png?ex=69b2aded&is=69b15c6d&hm=327cdaa08cd639ce08c8d522febd19c2a5db65955d3702e218220b37fc9c8913&=&format=webp&quality=lossless&width=454&height=630",
+              img: "/Vision & Ambition.png",
               tag: "Mindset"
             },
             {
               title: "Authentic Early Experience",
               desc: "Starting young gives MENN a rare advantage: hands-on experience in digital creation, problem-solving, and entrepreneurship. This early exposure is building a foundation for long-term success, setting him apart from peers.",
-              img: "https://media.discordapp.net/attachments/1308081652525826178/1481266090024767568/image.png?ex=69b2b00c&is=69b15e8c&hm=bc305514d35153a58bdaf0933389dfc0e2a5ea41ef9ffb82227f2c9dd371c1b8&=&format=webp&quality=lossless&width=598&height=1073",
+              img: "/Authentic Early Experience .png",
               tag: "Advantage"
             }
           ].map((pillar, i) => (
@@ -295,7 +295,7 @@ export default function App() {
             className="relative rounded-2xl overflow-hidden group cursor-pointer"
           >
             <img 
-              src="https://media.discordapp.net/attachments/1308081652525826178/1479041937125408870/image.png?ex=69ae8d25&is=69ad3ba5&hm=9e747766be148080777fa96e35414ab0c636c25b3aa2c358bcc49b64733b8a0a&=&format=webp&quality=lossless&width=772&height=1073" 
+              src="/Vision & Ambition.png" 
               alt="BMW M5 F90 Inspiration"
               referrerPolicy="no-referrer"
               className="w-full h-auto block group-hover:scale-105 transition-all duration-700"
