@@ -1,25 +1,342 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Cormorant Garamond", serif;
-  --color-bg: #050505;
+  --font-sans: "Tahoma", "MS Sans Serif", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Times New Roman", serif;
+  --font-mono: "Courier New", monospace;
 
-  @keyframes shine {
-    0% { transform: translateX(-150%) skewX(-25deg); }
-    100% { transform: translateX(150%) skewX(-25deg); }
-  }
+  /* Windows 2000 color palette */
+  --color-win-bg:       #d4d0c8;
+  --color-win-dark:     #808080;
+  --color-win-darker:   #404040;
+  --color-win-light:    #ffffff;
+  --color-win-border:   #ffffff;
+  --color-win-shadow:   #808080;
+  --color-win-title:    #000080;
+  --color-win-title-end:#1084d0;
+  --color-win-titletext:#ffffff;
+  --color-win-blue:     #000080;
+  --color-win-link:     #0000cc;
+  --color-win-text:     #000000;
+  --color-win-disabled: #808080;
+  --color-win-selected: #000080;
+  --color-win-seltext:  #ffffff;
+  --color-win-toolbar:  #d4d0c8;
+  --color-win-inset:    #ffffff;
+  --color-win-green:    #008000;
+
+  /* Tokens */
+  --color-background:   var(--color-win-bg);
+  --color-foreground:   var(--color-win-text);
 }
 
 @layer base {
   body {
-    @apply bg-bg text-white font-sans antialiased;
+    @apply font-sans antialiased;
+    background-color: var(--color-win-bg);
+    color: var(--color-win-text);
+    font-size: 11px;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 }
 
-@layer utilities {
-  .glass {
-    @apply bg-[#050505]/80 backdrop-blur-md;
-  }
+/* === Win2000 beveled / raised button === */
+.win-btn {
+  background-color: #d4d0c8;
+  color: #000;
+  border: none;
+  padding: 3px 12px;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-size: 11px;
+  cursor: default;
+  box-shadow:
+    inset 1px 1px 0px #ffffff,
+    inset -1px -1px 0px #808080,
+    1px 1px 0px #404040;
+  user-select: none;
+  min-width: 75px;
+}
+
+.win-btn:active {
+  box-shadow:
+    inset 1px 1px 0px #808080,
+    inset -1px -1px 0px #ffffff;
+  padding: 4px 11px 2px 13px;
+}
+
+.win-btn:focus {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+
+/* === Win2000 default/primary button === */
+.win-btn-default {
+  background-color: #d4d0c8;
+  color: #000;
+  border: 2px solid #000;
+  padding: 2px 10px;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-size: 11px;
+  cursor: default;
+  box-shadow:
+    inset 1px 1px 0px #ffffff,
+    inset -1px -1px 0px #808080,
+    1px 1px 0px #404040;
+  user-select: none;
+  min-width: 75px;
+}
+
+/* === Win2000 window panel === */
+.win-window {
+  background-color: #d4d0c8;
+  box-shadow:
+    inset 1px 1px 0px #ffffff,
+    inset -1px -1px 0px #808080,
+    2px 2px 0px #404040;
+  border: 1px solid #ffffff;
+}
+
+/* === Win2000 inset / sunken panel === */
+.win-inset {
+  background-color: #ffffff;
+  box-shadow:
+    inset 1px 1px 0px #808080,
+    inset -1px -1px 0px #ffffff;
+  border: 1px solid #404040;
+}
+
+/* === Win2000 sunken group box === */
+.win-group {
+  border: 1px solid #808080;
+  box-shadow: 1px 1px 0px #ffffff;
+  padding: 16px 12px 12px;
+  position: relative;
+  background-color: #d4d0c8;
+}
+
+/* === Title bar gradient === */
+.win-titlebar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  gap: 4px;
+}
+
+.win-titlebar-btn {
+  width: 16px;
+  height: 14px;
+  background-color: #d4d0c8;
+  font-size: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  box-shadow:
+    inset 1px 1px 0px #ffffff,
+    inset -1px -1px 0px #808080,
+    1px 1px 0px #404040;
+  color: #000;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.win-titlebar-btn:active {
+  box-shadow:
+    inset 1px 1px 0px #808080,
+    inset -1px -1px 0px #ffffff;
+}
+
+/* === Toolbar === */
+.win-toolbar {
+  background-color: #d4d0c8;
+  border-bottom: 1px solid #808080;
+  box-shadow: 0 1px 0 #ffffff;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.win-toolbar-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 2px 8px;
+  font-family: "Tahoma", sans-serif;
+  font-size: 11px;
+  cursor: default;
+  color: #000;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.win-toolbar-btn:hover {
+  border-color: #808080;
+  box-shadow:
+    inset 1px 1px 0px #ffffff,
+    inset -1px -1px 0px #808080;
+}
+
+.win-toolbar-btn:active {
+  box-shadow:
+    inset 1px 1px 0px #808080,
+    inset -1px -1px 0px #ffffff;
+}
+
+.win-toolbar-separator {
+  width: 1px;
+  height: 20px;
+  background-color: #808080;
+  box-shadow: 1px 0 0 #ffffff;
+  margin: 0 4px;
+}
+
+/* === Menu bar === */
+.win-menubar {
+  background-color: #d4d0c8;
+  border-bottom: 1px solid #808080;
+  padding: 1px 4px;
+  display: flex;
+  gap: 0;
+}
+
+.win-menu-item {
+  padding: 2px 8px;
+  font-size: 11px;
+  cursor: default;
+  color: #000;
+  text-decoration: none;
+}
+
+.win-menu-item:hover, .win-menu-item.active {
+  background-color: #000080;
+  color: #ffffff;
+}
+
+/* === Statusbar === */
+.win-statusbar {
+  background-color: #d4d0c8;
+  border-top: 1px solid #808080;
+  box-shadow: 0 -1px 0 #ffffff;
+  padding: 2px 8px;
+  font-size: 11px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.win-status-panel {
+  box-shadow:
+    inset 1px 1px 0px #808080,
+    inset -1px -1px 0px #ffffff;
+  padding: 1px 8px;
+  font-size: 11px;
+}
+
+/* === Input === */
+.win-input {
+  border: none;
+  box-shadow:
+    inset 1px 1px 0px #808080,
+    inset -1px -1px 0px #ffffff;
+  background-color: #ffffff;
+  color: #000;
+  padding: 2px 4px;
+  font-family: "Tahoma", sans-serif;
+  font-size: 11px;
+  outline: none;
+}
+
+.win-input:focus {
+  outline: none;
+}
+
+/* === Link === */
+.win-link {
+  color: #0000cc;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.win-link:hover {
+  color: #cc0000;
+}
+
+/* === Progress bar === */
+.win-progress-track {
+  box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff;
+  background: #fff;
+  height: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.win-progress-fill {
+  background: repeating-linear-gradient(
+    90deg,
+    #000080 0px,
+    #000080 10px,
+    #4040c0 10px,
+    #4040c0 16px
+  );
+  height: 100%;
+  animation: progress-march 0.4s linear infinite;
+}
+
+@keyframes progress-march {
+  from { background-position: 0 0; }
+  to { background-position: 16px 0; }
+}
+
+/* === Scrollbar styling === */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background: #d4d0c8;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d0c8;
+  box-shadow:
+    inset 1px 1px 0px #ffffff,
+    inset -1px -1px 0px #808080;
+}
+::-webkit-scrollbar-button {
+  background: #d4d0c8;
+  box-shadow:
+    inset 1px 1px 0px #ffffff,
+    inset -1px -1px 0px #808080;
+  height: 16px;
+  width: 16px;
+}
+::-webkit-scrollbar-corner {
+  background: #d4d0c8;
+}
+
+/* === IE-style marquee for flavor === */
+@keyframes marquee-scroll {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+.win-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.win-marquee-inner {
+  display: inline-block;
+  animation: marquee-scroll 18s linear infinite;
 }
