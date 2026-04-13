@@ -225,7 +225,7 @@ export default function App() {
   };
 
   const handleAdminLogin = () => {
-    const correctKey = import.meta.env.VITE_ADMIN_KEY || 'admin123';
+    const correctKey = import.meta.env.VITE_ADMIN_KEY || 'momentumgonnapaycountless!';
     if (adminKeyInput === correctKey) {
       setIsAdmin(true);
       setIsKeyCorrect(true);
